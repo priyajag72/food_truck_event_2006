@@ -1,10 +1,14 @@
+require "date"
+
 class Event
 
-  attr_reader :name, :food_trucks
+  attr_reader :name, :food_trucks, :date
 
   def initialize(name)
     @name = name
     @food_trucks = []
+    # require "pry"; binding.pry
+    @date = Date.today.strftime("%e/%m/%Y")
   end
 
   def add_food_truck(truck)
