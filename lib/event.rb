@@ -37,4 +37,12 @@ class Event
     end
   end
 
+  def sorted_item_list
+    name = []
+    total_inventory.keys.each do |item|
+      name << item.name
+    end
+    y = name.sort
+  end
+
 end
