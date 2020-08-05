@@ -33,10 +33,28 @@ class FoodTruckTest < Minitest::Test
 
   def test_it_can_check_stock_after_item_is_stocked
     assert_equal 0, @food_truck.check_stock(@item1)
+
     @food_truck.stock(@item1, 30)
     expected = {@item1 => 30}
     assert_equal expected, @food_truck.inventory
+
     assert_equal 30, @food_truck.check_stock(@item1)
+  end
+
+  def test_it_can_stock_and_check_multiple_items
+    assert_equal 0, @food_truck.check_stock(@item1)
+
+    @food_truck.stock(@item1, 30)
+    expected = {@item1 => 30}
+    assert_equal expected, @food_truck.inventory
+
+    assert_equal 30, @food_truck.check_stock(@item1)
+
+    @food_truck.stock(@item2, 12)
+    assert_equal 12, @food_truck.check_stock(@item2)
+    expected2 = {@item1 => 30, @item2 => 12}
+    assert_equal expected2, @food_truck.inventory
+
   end
 
 end
