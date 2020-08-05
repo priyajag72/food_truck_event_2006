@@ -25,6 +25,7 @@ class EventTest < Minitest::Test
     @food_truck2.stock(@item3, 25)
 
     @food_truck3.stock(@item1, 65)
+    @food_truck3.stock(@item3, 10)
   end
 
   def test_it_exists
@@ -61,4 +62,12 @@ class EventTest < Minitest::Test
     assert_equal [@food_truck2], @event.food_trucks_that_sell(@item4)
   end
 
+  def test_it_can_call_total_inventory
+    @event.add_food_truck(@food_truck1)
+    @event.add_food_truck(@food_truck2)
+    @event.add_food_truck(@food_truck3)
+
+    assert_equal 50, @event.total_inventory[@item4][:quantity]
+    assert_equal [@food_truck1, @food_truck3], @event.total_inventory[@item1][:food_trucks]
+  end
 end
