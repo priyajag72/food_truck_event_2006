@@ -11,6 +11,7 @@ class EventTest < Minitest::Test
     @item2 = Item.new({name: 'Apple Pie (Slice)', price: '$2.50'})
     @item3 = Item.new({name: "Peach-Raspberry Nice Cream", price: "$5.30"})
     @item4 = Item.new({name: "Banana Nice Cream", price: "$4.25"})
+    @item5 = Item.new({name: 'Onion Pie', price: '$25.00'})
 
     @food_truck1 = FoodTruck.new("Rocky Mountain Pies")
     @food_truck2 = FoodTruck.new("Ba-Nom-a-Nom")
@@ -85,5 +86,9 @@ class EventTest < Minitest::Test
     @event.add_food_truck(@food_truck3)
 
     assert_equal ["Apple Pie (Slice)", "Banana Nice Cream", "Peach Pie (Slice)", "Peach-Raspberry Nice Cream"], @event.sorted_item_list
+  end
+
+  def test_case_name
+
   end
 end
