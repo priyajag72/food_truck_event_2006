@@ -70,4 +70,13 @@ class EventTest < Minitest::Test
     assert_equal 50, @event.total_inventory[@item4][:quantity]
     assert_equal [@food_truck1, @food_truck3], @event.total_inventory[@item1][:food_trucks]
   end
+
+  def test_it_can_check_overstocked_items
+    # An item is overstocked if it is sold by more than 1 food truck AND the total quantity is greater than 50.
+    @event.add_food_truck(@food_truck1)
+    @event.add_food_truck(@food_truck2)
+    @event.add_food_truck(@food_truck3)
+
+    assert_equal [@item1], @event.overstocked_items
+  end
 end
