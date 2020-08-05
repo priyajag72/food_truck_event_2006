@@ -54,7 +54,6 @@ class FoodTruckTest < Minitest::Test
     assert_equal 12, @food_truck.check_stock(@item2)
     expected2 = {@item1 => 30, @item2 => 12}
     assert_equal expected2, @food_truck.inventory
-
   end
 
 end
