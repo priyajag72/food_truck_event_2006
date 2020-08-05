@@ -21,4 +21,14 @@ class Event
     end
   end
 
+  def total_inventory
+    @food_trucks.inject(Hash.new{ |hash, key| hash[key] = {quantity: 0, food_trucks: [] }}) do |inventory_hash, truck|
+      truck.inventory.each do |item, quan|
+        inventory_hash[item][:quantity] += quan
+        inventory_hash[item][:food_trucks] << truck
+      end
+      inventory_hash
+    end
+  end
+
 end
