@@ -8,10 +8,8 @@ class FoodTruck
   end
 
   def check_stock(item)
-    if @inventory[item].nil?
-      0
-    else
-      @inventory[item]
+    if @inventory[item].nil?; 0
+    else; @inventory[item]
     end
   end
 
