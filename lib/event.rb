@@ -12,7 +12,7 @@ class Event
   end
 
   def food_truck_names
-    @food_trucks.collect { |truck| truck.name }
+    @food_trucks.collect(&:name)
   end
 
   def food_trucks_that_sell(item)
@@ -38,9 +38,7 @@ class Event
   end
 
   def sorted_item_list
-    total_inventory.keys.map do |item|
-      item.name
-    end.sort
+    total_inventory.keys.map(&:name).sort
   end
 
 end
