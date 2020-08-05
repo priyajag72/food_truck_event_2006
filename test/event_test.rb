@@ -72,11 +72,18 @@ class EventTest < Minitest::Test
   end
 
   def test_it_can_check_overstocked_items
-    # An item is overstocked if it is sold by more than 1 food truck AND the total quantity is greater than 50.
     @event.add_food_truck(@food_truck1)
     @event.add_food_truck(@food_truck2)
     @event.add_food_truck(@food_truck3)
 
     assert_equal [@item1], @event.overstocked_items
+  end
+
+  def test_it_can_sort_all_items_and_remove_duplicates
+    @event.add_food_truck(@food_truck1)
+    @event.add_food_truck(@food_truck2)
+    @event.add_food_truck(@food_truck3)
+
+    assert_equal ["Apple Pie (Slice)", "Banana Nice Cream", "Peach Pie (Slice)", "Peach-Raspberry Nice Cream"], @event.sorted_item_list
   end
 end
